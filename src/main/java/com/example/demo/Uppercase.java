@@ -18,13 +18,9 @@ package com.example.demo;
 
 import java.util.function.Function;
 
-import org.springframework.messaging.Message;
-import org.springframework.messaging.support.MessageBuilder;
-
-public class Uppercase implements Function<Message<String>, Message<String>> {
+public class Uppercase implements Function<String,String> {
 	@Override
-	public Message<String> apply(Message<String> value) {
-		return MessageBuilder.withPayload(value.getPayload().toUpperCase())
-				.copyHeaders(value.getHeaders()).build();
+	public String apply(String value) {
+		return value.toUpperCase();
 	}
 }
